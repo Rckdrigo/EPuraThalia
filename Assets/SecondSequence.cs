@@ -4,7 +4,7 @@ using Vuforia;
 
 public class SecondSequence : MonoBehaviour
 {
-    public GameObject thalia;
+    public GameObject thalia, epura;
     public GameObject button;
     bool started;
 
@@ -23,8 +23,9 @@ public class SecondSequence : MonoBehaviour
 
     IEnumerator VideoSequence()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(5f);
         thalia.SetActive(false);
+        epura.SetActive(true);
         button.SetActive(true);
     }
 
