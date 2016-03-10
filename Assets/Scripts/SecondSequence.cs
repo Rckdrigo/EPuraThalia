@@ -23,7 +23,7 @@ public class SecondSequence : MonoBehaviour
 
     IEnumerator VideoSequence()
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(4f);
         thalia.SetActive(false);
         epura.SetActive(true);
         button.SetActive(true);
