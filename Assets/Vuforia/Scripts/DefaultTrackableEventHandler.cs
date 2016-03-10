@@ -1,29 +1,29 @@
 /*==============================================================================
 Copyright (c) 2010-2014 Qualcomm Connected Experiences, Inc.
 All Rights Reserved.
-Confidential and Proprietary - Qualcomm Connected Experiences, Inc.
+Confidential and Proprietary - Protected under copyright and other laws.
 ==============================================================================*/
 
 using UnityEngine;
 
 namespace Vuforia
 {
-
     /// <summary>
     /// A custom handler that implements the ITrackableEventHandler interface.
     /// </summary>
     public class DefaultTrackableEventHandler : MonoBehaviour,
                                                 ITrackableEventHandler
     {
+        public delegate void VuforiaEvents();
+
+        public static event VuforiaEvents Found;
+
         #region PRIVATE_MEMBER_VARIABLES
 
         private TrackableBehaviour mTrackableBehaviour;
 
         #endregion // PRIVATE_MEMBER_VARIABLES
 
-        public delegate void VuforiaTrackingEvent();
-
-        public static event VuforiaTrackingEvent Found,Lost;
 
 
         #region UNTIY_MONOBEHAVIOUR_METHODS
@@ -56,12 +56,10 @@ namespace Vuforia
                 newStatus == TrackableBehaviour.Status.EXTENDED_TRACKED)
             {
                 OnTrackingFound();
-                Found();
             }
             else
             {
                 OnTrackingLost();
-                Lost();
             }
         }
 
@@ -76,7 +74,7 @@ namespace Vuforia
         {
             Renderer[] rendererComponents = GetComponentsInChildren<Renderer>(true);
             Collider[] colliderComponents = GetComponentsInChildren<Collider>(true);
-
+            Found();
             // Enable rendering:
             foreach (Renderer component in rendererComponents)
             {

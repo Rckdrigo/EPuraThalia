@@ -25,11 +25,11 @@ public class FirstSequence : MonoBehaviour
     IEnumerator VideoSequence()
     {
         yield return new WaitForSeconds(2f);
-        scenario.SetActive(false);
         Handheld.PlayFullScreenMovie("Secuencia01b.mp4", Color.black, FullScreenMovieControlMode.Hidden);
-        yield return new WaitForEndOfFrame();
-        yield return new WaitForEndOfFrame();
-        SceneManager.LoadScene(nextScene);
+        //yield return new WaitForEndOfFrame();
+        AsyncOperation async = Application.LoadLevelAsync(nextScene);
+        yield return async;
+        Debug.Log("Loading complete");
     }
 
 }
