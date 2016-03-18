@@ -5,7 +5,7 @@ using Vuforia;
 
 public class FirstSequence : MonoBehaviour
 {
-    public GameObject scenario, thalia, epura, button;
+    public GameObject scenario, thalia, epura, bottle, button;
     bool started;
 
     void Start()
@@ -32,6 +32,7 @@ public class FirstSequence : MonoBehaviour
         yield return new WaitForSeconds(7f);
         thalia.SetActive(false);
         epura.SetActive(true);
+        bottle.SetActive(true);
         button.SetActive(true);
     }
 
