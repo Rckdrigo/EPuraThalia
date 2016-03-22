@@ -38,6 +38,6 @@ public class FirstSequence : MonoBehaviour
 
     public void Quit()
     {
-        Application.Quit();
+        SceneManager.LoadScene(1);
     }
 }
