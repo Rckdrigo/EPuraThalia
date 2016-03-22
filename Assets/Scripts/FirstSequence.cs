@@ -38,7 +38,6 @@ public class FirstSequence : MonoBehaviour
 
     public void Quit()
     {
-        print("SAliendo");
         Application.Quit();
     }
 }
