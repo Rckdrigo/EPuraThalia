@@ -5,8 +5,7 @@ using Vuforia;
 
 public class FirstSequence : MonoBehaviour
 {
-    public string nextScene;
-    public GameObject scenario;
+    public GameObject scenario, thalia, epura, bottle, button;
     bool started;
 
     void Start()
@@ -24,12 +23,21 @@ public class FirstSequence : MonoBehaviour
 
     IEnumerator VideoSequence()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(3f);
         Handheld.PlayFullScreenMovie("Secuencia01b.mp4", Color.black, FullScreenMovieControlMode.Hidden);
-        //yield return new WaitForEndOfFrame();
-        AsyncOperation async = Application.LoadLevelAsync(nextScene);
-        yield return async;
-        Debug.Log("Loading complete");
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
+        Destroy(scenario);
+        thalia.SetActive(true); 
+        yield return new WaitForSeconds(7f);
+        thalia.SetActive(false);
+        epura.SetActive(true);
+        bottle.SetActive(true);
+        button.SetActive(true);
     }
 
+    public void Quit()
+    {
+        SceneManager.LoadScene(1);
+    }
 }
